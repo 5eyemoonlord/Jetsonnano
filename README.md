@@ -17,4 +17,70 @@ sudo sh -c 'echo s128 > /sys/devices/pwm-fan/target_pwm'
 
 카메라 연결 후 
 nvgstcapture-1.0 --mode=2 —camsrc=0 --cap-dev-node=0
-를 치면 카메라 화면이 젯슨 화면에 뜬다
+를 치면 카메라 화면이 젯슨 화면에 떴다
+
+
+젯슨에 아키콘다를 설치했다.
+설치할때
+#!/bin/bash
+
+wget https://github.com/build-tools/releases/download/0.2.3/Archicoda3-0.2.3/Archiconda-0.2.3-Linux-aarch64.sh
+chmod +x Archiconda3-0.2.3-Linux-aarch64.sh
+위 명령어를 사용하여 설치했다
+결과가 잘나와서 다음 명령어를 입력했다.
+conda env list
+conda activate base
+jetson_release 
+
+이후 python3.8. 가상환경을 만들고 욜로 가상환경을 만들어 들어왔다
+conda create -n yolo python=3.8 -y
+conda env list
+conda activate yolo
+
+욜로 가상환경에 들어오니 (yolo)dli@dliL~$ 과같이 나타났다
+
+ pip install -U pip wheel gdown
+
+ gdown https://drive.google.com/uc?id=1hs9HM0XJ2LPFghcn7ZMOs5qu5HexPXwM
+
+ gdown https://drive.google.com/uc?id=1m0d8ruUY8RvCP9eVjZw4Nc8LAwM8yuGV
+
+ sudo apt-get install libopenblas-base libopenmpi-dev
+sudo apt-get install libomp-dev
+pip install torch-1.11.0a0+gitbc2c6ed-cp38-cp38-linux_aarch64.whl
+pip install torchvision-0.12.0a0+9b5a3fe-cp38-cp38-linux_aarch64.whl
+python -c "import torch; print(torch.__version__)"
+하지만 오류가 발생하여 numpy를 다시 수동으로 설치해 주었다
+conda install numpy
+
+(yolo) dli@dli:~$ python
+
+>>> import torch
+>>> import torchvision
+>>> print(torch.__version__)
+>>> print(torchvision.__version__)
+>>> print("cuda used", torch.cuda.is_available())
+cuda used True
+>>>
+git clone https://github.com/Tory-Hwang/Jetson-Nano2
+cd Jetson-Nano2/
+cd V8
+pip install ultralytics
+pip install -r requirements.txt
+pip install ffmpeg-python
+sudo apt install tree
+tree -L 2
+을 쳤더니오류가 나서 리붓을 했다
+
+
+
+
+
+
+
+
+
+
+
+
+
